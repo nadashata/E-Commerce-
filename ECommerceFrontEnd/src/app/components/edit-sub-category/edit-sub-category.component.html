@@ -1,0 +1,22 @@
+<div>
+  <br>
+  <mat-card>
+    <section class="mat-typography">
+      <h3>Edditing Sub Category</h3>
+    </section>
+    <mat-divider></mat-divider>
+    <br>
+    <form [formGroup]="editForm" class="edit-form">
+      <mat-form-field class="field-full-width">
+        <input required matInput placeholder="Sub Category Name" formControlName="subCategoryName" #subCategoryName>
+      </mat-form-field>
+      <mat-select placeholder="Category Name" formControlName="categoryName" #categoryName>
+        <mat-option *ngFor= "let category of categories" value="{{category._id}}">{{category.categoryName}}</mat-option>
+    </mat-select>
+    </form>
+    <mat-divider></mat-divider>
+    <button mat-raised-button color="primary" type="submit" (click)="editSubCategory(subCategoryName.value,categoryName.value)" [disabled]="!editForm.valid ">done</button> 
+    <button mat-raised-button color="accent" routerLink="/subCategories">Cancel</button>
+
+  </mat-card>
+</div>

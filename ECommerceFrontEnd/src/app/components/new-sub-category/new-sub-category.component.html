@@ -1,0 +1,23 @@
+<div>
+  <br>
+  <mat-card>
+    <section class="mat-typography">
+      <h3>Adding a new sub Category</h3>
+    </section>
+    <mat-divider></mat-divider>
+    <br>
+    <form [formGroup]="createForm" class="create-form">
+      <mat-form-field class="field-full-width">
+        <input required matInput placeholder="Sub Category Name" formControlName="subCategoryName" #subCategoryName>
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      </mat-form-field>
+      <mat-select placeholder="Category Name" formControlName="categoryName" #categoryName>
+          <mat-option *ngFor= "let category of categories" value="{{category._id}}">{{category.categoryName}}</mat-option>
+      </mat-select>
+    </form>
+    <mat-divider></mat-divider>
+    <button mat-raised-button color="primary" type="submit" (click)="addSubCategory(subCategoryName.value,categoryName.value)" [disabled]="!createForm.valid ">done</button> 
+    <button mat-raised-button color="accent" routerLink="/subCategories">Cancel</button>
+
+  </mat-card>
+</div>

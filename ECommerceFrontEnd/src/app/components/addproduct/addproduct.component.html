@@ -1,0 +1,51 @@
+<mat-grid-list cols="2" rowHeight='500px' rowWeidth='500px'>
+    <mat-grid-tile>
+        <mat-card>
+            <form [formGroup]="productForm" class="product-form">
+                <br>
+                <mat-form-field class="field-full-width">
+                    <input required matInput placeholder="Product Name" formControlName="productName" #productName/>
+                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                </mat-form-field>
+                <br>
+                <mat-form-field class="field-full-width">
+                    <input type="number" required matInput placeholder="Product Price" formControlName="productPrice" #productPrice/>
+                </mat-form-field>
+                <br>
+                <mat-form-field class="field-full-width">
+                    <input required matInput placeholder="Product Describtion" formControlName="productDescription" #productDescription/>
+                </mat-form-field>
+                <br>
+                <mat-select placeholder="Category Name" formControlName="categoryName" #categoryName>
+                    <mat-option *ngFor= "let category of categories" value="{{category._id}}">{{category.categoryName}}</mat-option>
+                </mat-select>
+                <br>
+                <mat-form-field class="field-full-width">
+                    <input required matInput placeholder="Product Image URL" formControlName="productImage" #productImage/>
+                </mat-form-field>
+                <br>
+                <mat-form-field class="field-full-width">
+                    <input type="number" required matInput placeholder="no of available Pieces" formControlName="availablePieces" #availablePieces/>
+                </mat-form-field>
+                <br>
+                <button mat-raised-button color="primary" type="submit" (click)="addProduct(productName.value,productPrice.value,productDescription.value,productImage.value,categoryName.value,availablePieces.value)" [disabled]="!productForm.valid ">done</button> 
+                <button mat-raised-button color="accent" routerLink="/products">Cancel</button>
+            </form>
+        </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <mat-card >
+            <mat-card-title>{{productName.value}}</mat-card-title>
+            <mat-card-content>{{productPrice.value | currency :'EGP' :true}}</mat-card-content>
+            <img mat-card-image src="{{productImage.value}}">
+        </mat-card>   
+    </mat-grid-tile>
+</mat-grid-list>
+
+
+       
+    
+
+
+
+

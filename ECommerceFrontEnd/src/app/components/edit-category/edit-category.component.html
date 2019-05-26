@@ -1,0 +1,20 @@
+<div>
+  <br>
+  <mat-card>
+    <section class="mat-typography">
+      <h3>Adding a new Category</h3>
+    </section>
+    <mat-divider></mat-divider>
+    <br>
+    <form [formGroup]="editForm" class="edit-form">
+      <mat-form-field class="field-full-width">
+        <input required matInput placeholder="Category Name" formControlName="categoryName" #categoryName>
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      </mat-form-field>
+    </form>
+    <mat-divider></mat-divider>
+    <button mat-raised-button color="primary" type="submit" (click)="editCategory(categoryName.value)" [disabled]="!editForm.valid ">done</button> 
+    <button mat-raised-button color="accent" routerLink="/categories">Cancel</button>
+
+  </mat-card>
+</div>
